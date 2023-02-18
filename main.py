@@ -8,8 +8,8 @@ from kivy.clock import Clock
 import time
 
 class Time(Label):
-	def updateTime(self, *args):
-		t = time.localtime()
+    def updateTime(self, *args):
+        t = time.localtime()
         hour = t.tm_hour % 12 or 12
         minute = t.tm_min
         am_pm = 'AM' if t.tm_hour < 12 else 'PM'
@@ -99,75 +99,62 @@ class Time(Label):
                 String7 = One
             else:
                 String9 = Twelve
-		b = 1
-		while b < 2:
-			if minute < 35:
-				if minute < 20:
-					if minute < 5:
-						if hour == 10 or hour == 22:
-							String1 = "[font=Courier][color=ff3333]I    T[/color]    L    [color=ff3333]I    S[/color]    A    S    A    M    P    M\n\n"
-							String10 = "[color=ff3333]T    E    N[/color]    S    E    [color=ff3333]O'    C    L    O    C    K[/color][/font]"
-							b+=1 
-						else:
-							String1 = "[font=Courier][color=ff3333]I    T[/color]    L    [color=ff3333]I    S[/color]    A    S    A    M    P    M\n\n"
-							String10 = "T    E    N    S    E    [color=ff3333]O'    C    L    O    C    K[/color][/font]"
-							b+=1
-					elif minute < 10:
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-						String3 = "T    W    E    N    T    Y    [color=ff3333]F    I    V    E[/color]    X\n\n"
-					elif minute < 15:
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-						String4 = "H    A    L    F    S    [color=ff3333]T    E    N[/color]    F    T    O\n\n"
-					else:
-						String2 = "A    C    [color=ff3333]Q    U    A    R    T    E    R[/color]    D    C\n\n"
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-				else:
-					if minute < 25:
-						String3 = "[color=ff3333]T    W    E    N    T    Y[/color]    F    I    V    E    X\n\n"
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-					elif minute < 30:
-						String3 = "[color=ff3333]T    W    E    N    T    Y    F    I    V    E[/color]    X\n\n"
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-					else:
-						String4 = "[color=ff3333]H    A    L    F[/color]    S    T    E    N    F    T    O\n\n"
-						if hour == 9 or hour == 21 :
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-						else:
-							String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
-			else:
-				if minute < 40:
-					String3 = "[color=ff3333]T    W    E    N    T    Y    F    I    V    E[/color]    X\n\n"
-					String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
-				elif minute < 45:
-					String3 = "[color=ff3333]T    W    E    N    T    Y[/color]    F    I    V    E    X\n\n"
-					String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
-				elif minute < 50:
-					String2 = "A    C    [color=ff3333]Q    U    A    R    T    E    R[/color]    D    C\n\n"
-					String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
-				elif minute < 55:
-					String4 = "H    A    L    F    S    [color=ff3333]T    E    N[/color]    F    [color=ff3333]T    O[/color]\n\n"
-				else:
-					String3 = "T    W    E    N    T    Y    [color=ff3333]F    I    V    E[/color]    X\n\n"
-					String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
-			b+=1
 
-		self.text = String1 + String2 + String3 + String4 + String5 + String6 + String7 + String8 + String9 + String10
-		self.markup = True
+        if minute < 5:
+            if hour == 10:
+                String1 = "[font=Courier][color=ff3333]I    T[/color]    L    [color=ff3333]I    S[/color]    A    S    A    M    P    M\n\n"
+                String10 = "[color=ff3333]T    E    N[/color]    S    E    [color=ff3333]O'    C    L    O    C    K[/color][/font]"
+            else:
+                String1 = "[font=Courier][color=ff3333]I    T[/color]    L    [color=ff3333]I    S[/color]    A    S    A    M    P    M\n\n"
+                String10 = "T    E    N    S    E    [color=ff3333]O'    C    L    O    C    K[/color][/font]"
+        elif minute < 10:
+            if hour == 9:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+            else:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
+                String3 = "T    W    E    N    T    Y    [color=ff3333]F    I    V    E[/color]    X\n\n"
+        elif minute < 15:
+            if hour == 9 or hour == 21:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+            else:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
+                String4 = "H    A    L    F    S    [color=ff3333]T    E    N[/color]    F    T    O\n\n"
+        elif minute < 25:
+            String3 = "[color=ff3333]T    W    E    N    T    Y[/color]    F    I    V    E    X\n\n"
+            if hour == 9 or hour == 21:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+            else:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
+        elif minute < 30:
+            String3 = "[color=ff3333]T    W    E    N    T    Y    F    I    V    E[/color]    X\n\n"
+            if hour == 9 or hour == 21:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+            else:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
+        elif minute < 35:
+            String4 = "[color=ff3333]H    A    L    F[/color]    S    T    E    N    F    T    O\n\n"
+            if hour == 9:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+            else:
+                String5 = "[color=ff3333]P    A    S    T[/color]    E    R    U    N    I    N    E\n\n"
+        elif minute < 40:
+            String3 = "[color=ff3333]T    W    E    N    T    Y    F    I    V    E[/color]    X\n\n"
+            String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
+        elif minute < 45:
+            String3 = "[color=ff3333]T    W    E    N    T    Y[/color]    F    I    V    E    X\n\n"
+            String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
+        elif minute < 50:
+            String2 = "A    C    [color=ff3333]Q    U    A    R    T    E    R[/color]    D    C\n\n"
+            String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
+        elif minute < 55:
+            String4 = "H    A    L    F    S    [color=ff3333]T    E    N[/color]    F    [color=ff3333]T    O[/color]\n\n"
+        else:
+            String3 = "T    W    E    N    T    Y    [color=ff3333]F    I    V    E[/color]    X\n\n"
+            String4 = "H    A    L    F    S    T    E    N    F    [color=ff3333]T    O[/color]\n\n"
+
+
+        self.text = String1 + String2 + String3 + String4 + String5 + String6 + String7 + String8 + String9 + String10
+        self.markup = True
 
 class HelloWorldApp(App):
 	def build(self):
@@ -175,7 +162,5 @@ class HelloWorldApp(App):
 		Clock.schedule_interval(t.updateTime, 1)
 		return(t)
 		
-		
-
 if __name__ == '__main__':
 	HelloWorldApp().run()
