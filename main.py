@@ -9,114 +9,96 @@ import time
 
 class Time(Label):
 	def updateTime(self, *args):
-		t = time.asctime()
+		t = time.localtime()
+        hour = t.tm_hour % 12 or 12
+        minute = t.tm_min
+        am_pm = 'AM' if t.tm_hour < 12 else 'PM'
+        time_str = '{:2d}:{:02d} {}'.format(hour, minute, am_pm)
 
-		String1 = "[font=Courier]I    T    L    I    S    A    S    A    M    P    M\n\n"
-		String2 = "A    C    Q    U    A    R    T    E    R    D    C\n\n"
-		String3 = "T    W    E    N    T    Y    F    I    V    E    X\n\n"
-		String4 = "H    A    L    F    S    T    E    N    F    T    O\n\n"
-		String5 = "P    A    S    T    E    R    U    N    I    N    E\n\n"
-		String6 = "O    N    E    S    I    X    T    H    R    E    E\n\n"
-		String7 = "F    O    U    R    F    I    V    E    T    W    O\n\n"
-		String8 = "E    I    G    H    T    E    L    E    V    E    N\n\n"
-		String9 = "S    E    V    E    N    T    W    E    L    V    E\n\n"
-		String10 = "T    E    N    S    E    O'    C    L    O    C    K[/font]"
+        String1 = "[font=Courier]I    T    L    I    S    A    S    A    M    P    M\n\n"
+        String2 = "A    C    Q    U    A    R    T    E    R    D    C\n\n"
+        String3 = "T    W    E    N    T    Y    F    I    V    E    X\n\n"
+        String4 = "H    A    L    F    S    T    E    N    F    T    O\n\n"
+        String5 = "P    A    S    T    E    R    U    N    I    N    E\n\n"
+        String6 = "O    N    E    S    I    X    T    H    R    E    E\n\n"
+        String7 = "F    O    U    R    F    I    V    E    T    W    O\n\n"
+        String8 = "E    I    G    H    T    E    L    E    V    E    N\n\n"
+        String9 = "S    E    V    E    N    T    W    E    L    V    E\n\n"
+        String10 = "T    E    N    S    E    O'    C    L    O    C    K[/font]"
 
-		word = list(t)
-		song = []
-		n = 11
-	
-		while n < 13:
-			song.append(word[n])
-			n += 1
+        One = "[color=ff3333]O    N    E[/color]    S    I    X    T    H    R    E    E\n\n"
+        Two = "F    O    U    R    F    I    V    E    [color=ff3333]T    W    O[/color]\n\n"
+        Three = "O    N    E    S    I    X    [color=ff3333]T    H    R    E    E[/color]\n\n"
+        Four = "[color=ff3333]F    O    U    R[/color]    F    I    V    E    T    W    O\n\n"
+        Five = "F    O    U    R    [color=ff3333]F    I    V    E[/color]    T    W    O\n\n"
+        Six = "O    N    E    [color=ff3333]S    I    X[/color]    T    H    R    E    E\n\n"
+        Seven = "[color=ff3333]S    E    V    E    N[/color]    T    W    E    L    V    E\n\n"
+        Eight = "[color=ff3333]E    I    G    H    T[/color]    E    L    E    V    E    N\n\n"
+        Nine = "P    A    S    T    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
+        Ten = "[color=ff3333]T    E    N[/color]    S    E    C    C    L    O    C    K[/font]"
+        Eleven = "E    I    G    H    T    [color=ff3333]E    L    E    V    E    N[/color]\n\n"
+        Twelve = "S    E    V    E    N    [color=ff3333]T    W    E    L    V    E[/color]\n\n"
 
-		preUri = ''.join([str(elem) for elem in song])
-		hour = int(preUri)
-		
-		song = []
-		n = 14
-	
-		while n < 16:
-			song.append(word[n])
-			n += 1
-
-		preUri = ''.join([str(elem) for elem in song])
-		minute = int(preUri)
-
-		a = 1
-		while a < 2:
-			if hour < 12:
-				if hour < 6:
-					if hour < 3:
-						if hour == 1:
-							if minute < 35:
-								String6 = "[color=ff3333]O    N    E[/color]    S    I    X    T    H    R    E    E\n\n"
-							else:
-								String7 = "F    O    U    R    F    I    V    E    [color=ff3333]T    W    O[/color]\n\n"
-						elif hour == 2:
-							if minute < 35:
-								String7 = "F    O    U    R    F    I    V    E    [color=ff3333]T    W    O[/color]\n\n"
-							else:
-								String6 = "O    N    E    S    I    X    [color=ff3333]T    H    R    E    E[/color]\n\n"
-						else:
-							if minute < 35:
-								String9 = "S    E    V    E    N    [color=ff3333]T    W    E    L    V    E[/color]\n\n"
-							else:
-								String6 = "[color=ff3333]O    N    E[/color]    S    I    X    T    H    R    E    E\n\n"
-					else:
-						if hour == 3:
-							if minute < 35:
-								String6 = "O    N    E    S    I    X    [color=ff3333]T    H    R    E    E[/color]\n\n"
-							else:
-								String7 = "[color=ff3333]F    O    U    R[/color]    F    I    V    E    T    W    O\n\n"
-						elif hour == 4:
-							if minute < 35:
-								String7 = "[color=ff3333]F    O    U    R[/color]    F    I    V    E    T    W    O\n\n"
-							else:
-								String7 = "F    O    U    R    [color=ff3333]F    I    V    E[/color]    T    W    O\n\n"
-						else:
-							if minute < 35:
-								String7 = "F    O    U    R    [color=ff3333]F    I    V    E[/color]    T    W    O\n\n"
-							else: 
-								String6 = "O    N    E    [color=ff3333]S    I    X[/color]    T    H    R    E    E\n\n"
-				else:
-					if hour < 9:
-						if hour == 6:
-							if minute < 35:
-								String6 = "O    N    E    [color=ff3333]S    I    X[/color]    T    H    R    E    E\n\n"
-							else:
-								String9 = "[color=ff3333]S    E    V    E    N[/color]    T    W    E    L    V    E\n\n"
-						elif hour == 7:
-							if minute < 35:
-								String9 = "[color=ff3333]S    E    V    E    N[/color]    T    W    E    L    V    E\n\n"
-							else:
-								String8 = "[color=ff3333]E    I    G    H    T[/color]    E    L    E    V    E    N\n\n"
-						else:
-							if minute < 35:
-								String8 = "[color=ff3333]E    I    G    H    T[/color]    E    L    E    V    E    N\n\n"
-							else:
-								String5 = "P    A    S    T    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-					else:
-						if hour == 9:
-							if minute < 35:
-								String5 = "P    A    S    T    E    R    U    [color=ff3333]N    I    N    E[/color]\n\n"
-							else:
-								String10 = "[color=ff3333]T    E    N[/color]    S    E    C    C    L    O    C    K[/font]"
-						elif hour == 10:
-							if minute < 35:
-								String10 = "[color=ff3333]T    E    N[/color]    S    E    O'    C    L    O    C    K[/font]"
-							else:
-								String8 = "E    I    G    H    T    [color=ff3333]E    L    E    V    E    N[/color]\n\n"
-						else:
-							if minute < 35:
-								String8 = "E    I    G    H    T    [color=ff3333]E    L    E    V    E    N[/color]\n\n"
-							else:
-								String9 = "S    E    V    E    N    [color=ff3333]T    W    E    L    V    E[/color]\n\n"
-				a+=1
-
-			else:
-				hour = hour - 12
-
+        if hour == 1:
+            if minute >= 35:
+                String6 = Two
+            else:
+                String7 = One
+        elif hour == 2:
+            if minute >= 35:
+                String6 = Three
+            else:
+                String7 = Two
+        elif hour == 3:
+            if minute >= 35:
+                String7 = Four
+            else:
+                String6 = Three
+        elif hour == 4:
+            if minute >= 35:
+                String7 = Five
+            else:
+                String7 = Four
+        elif hour == 5:
+            if minute >=35:
+                String6 = Six
+            else:
+                String7 = Five
+        elif hour == 6:
+            if minute >= 35:
+                String9 = Seven
+            else:
+                String6 = Six
+        elif hour == 7:
+            if minute >= 35:
+                String8 = Eight
+            else:
+                String9 = Seven
+        elif hour == 8:
+            if minute >= 35:
+                String5 = Nine
+            else:
+                String8 = Eight
+        elif hour == 9:
+            if minute >= 35:
+                String10 = Ten
+            else:
+                String5 = Nine
+        elif hour == 10:
+            if minute >= 35:
+                String8 = Eleven
+            else:
+                String10 = Ten
+        elif hour == 11:
+            if minute >= 35:
+                String9 = Twelve
+            else:
+                String8 = Eleven
+        else:
+            if minute >= 35:
+                String7 = One
+            else:
+                String9 = Twelve
 		b = 1
 		while b < 2:
 			if minute < 35:
